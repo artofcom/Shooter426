@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Shooter426.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{852CD5CD-6E61-40BF-8F0D-E0A4719066CC}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Shooter426.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\Shooter426Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FDACC25A-5C02-4A8E-AADD-204AF55C6493}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Shooter426">
+      <UniqueIdentifier>{172E3B51-0AAD-47A9-B2BA-493F962AC42D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Shooter426\Shooter426.Build.cs">
+      <Filter>Source\Shooter426</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Shooter426\Shooter426.cpp">
+      <Filter>Source\Shooter426</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Shooter426\Shooter426.h">
+      <Filter>Source\Shooter426</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Shooter426\Shooter426GameModeBase.cpp">
+      <Filter>Source\Shooter426</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Shooter426\Shooter426GameModeBase.h">
+      <Filter>Source\Shooter426</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Shooter426\ShooterAnimInstance.cpp">
+      <Filter>Source\Shooter426</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Shooter426\ShooterAnimInstance.h">
+      <Filter>Source\Shooter426</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Shooter426\ShooterCharacter.cpp">
+      <Filter>Source\Shooter426</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Shooter426\ShooterCharacter.h">
+      <Filter>Source\Shooter426</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

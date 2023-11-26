@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Shooter426",
+			"Path": "C:\\codes\\Shooter426\\Source\\Shooter426.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "Shooter426Editor",
+			"Path": "C:\\codes\\Shooter426\\Source\\Shooter426Editor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
