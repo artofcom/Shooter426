@@ -92,7 +92,54 @@ void AShooterCharacter::FireWeapon()
 		if (MuzzleFlash != nullptr)
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), MuzzleFlash, SocketTransform);
 		
+		// Crosshair Driven.
+		FVector2D ViewportSize;
+		if (GEngine && GEngine->GameViewport)
+		{
+			GEngine->GameViewport->GetViewportSize(ViewportSize);
+		}
+		FVector2D CrosshairLocation(ViewportSize.X * 0.5f, ViewportSize.Y * 0.5f);
+		CrosshairLocation.Y -= 50.0f;
+		FVector CrosshairWorldPosition;
+		FVector CrosshairWorldDirection;
 
+		bool bScreenToWorld = UGameplayStatics::DeprojectScreenToWorld(UGameplayStatics::GetPlayerController(this, 0),
+								CrosshairLocation,
+								CrosshairWorldPosition,
+								CrosshairWorldDirection);
+		if (bScreenToWorld)
+		{
+			FHitResult ScreenTraceHit;
+			const FVector Start{ CrosshairWorldPosition };
+			const FVector End{ CrosshairWorldPosition + CrosshairWorldDirection * 50'000.0f };
+
+			FVector BeamEndPoint{ End };
+			GetWorld()->LineTraceSingleByChannel(ScreenTraceHit, Start, End, ECollisionChannel::ECC_Visibility);
+
+			if (ScreenTraceHit.bBlockingHit)
+			{
+				// DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 2.0f);
+				// DrawDebugPoint(GetWorld(), FireHit.Location, 5.0f, FColor::Red, false, 2.0f);
+				BeamEndPoint = ScreenTraceHit.Location;
+				if (ImpactParticles != nullptr)
+				{
+					UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactParticles, ScreenTraceHit.Location);
+				}
+			}
+
+			if (BeamParticles != nullptr)
+			{
+				UParticleSystemComponent* Beam = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), BeamParticles, SocketTransform);
+				if (Beam != nullptr)
+				{
+					// Name 'Target' is from P_SmokeTrail_Faded particle.
+					Beam->SetVectorParameter(FName("Target"), BeamEndPoint);
+				}
+			}
+		}
+
+		// Gun Pointer Driven.
+		/*
 		// Line Tracing.
 		FHitResult FireHit;
 		const FVector Start{ SocketTransform.GetLocation() };
@@ -124,7 +171,7 @@ void AShooterCharacter::FireWeapon()
 				// Name 'Target' is from P_SmokeTrail_Faded particle.
 				Beam->SetVectorParameter(FName("Target"), BeamEndPoint);
 			}
-		}
+		}*/
 	}
 	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 	if (AnimInstance != nullptr && HipFireMontage != nullptr)
